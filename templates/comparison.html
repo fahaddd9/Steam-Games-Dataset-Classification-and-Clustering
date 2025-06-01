@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1 class="text-primary">Model Comparison & Selection</h1>
+    <p class="lead">
+        This section compares the performance of <strong>KNN</strong>, <strong>Naïve Bayes</strong>, <strong>Random Forest</strong>, and <strong>K-Means</strong> to determine the best approach for classifying and clustering Steam games. After thorough evaluation, I selected <strong>Random Forest</strong> as the top performer for classification due to its superior accuracy and ability to handle imbalanced data.
+    </p>
+    <p>
+        Below, you’ll find a detailed comparison report based on accuracy, precision, recall, and F1-scores across the models.
+    </p>
+    <h3>Comparison Report</h3>
+    <div class="border p-3 bg-light">
+        <pre>{{ comparison_report }}</pre>
+    </div>
+{% endblock %}

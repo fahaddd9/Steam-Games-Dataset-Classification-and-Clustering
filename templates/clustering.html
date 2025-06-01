@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1 class="text-primary">Clustering Analysis with K-Means</h1>
+    <p class="lead">
+        Beyond classification, I explored the natural groupings of Steam games using <strong>K-Means clustering</strong>. This unsupervised learning approach was applied to numerical features (e.g., price, achievements) to identify patterns among games.
+    </p>
+    <p>
+        To determine the optimal number of clusters, I used the <em>elbow method</em>, which suggested <code>k=4</code>—aligning with the four genres in the dataset. Below, you’ll find the elbow plot and a scatter plot visualizing the clusters in a 2D space (using PCA for dimensionality reduction).
+    </p>
+    <h3>Elbow Plot for Optimal <code>k</code></h3>
+    <div class="text-center">
+        <img src="{{ url_for('static', filename='images/elbow_plot.png') }}" class="img-fluid shadow-sm" alt="Elbow Plot">
+    </div>
+    <h3>K-Means Cluster Visualization</h3>
+    <div class="text-center">
+        <img src="{{ url_for('static', filename='images/kmeans_clusters_scatter.png') }}" class="img-fluid shadow-sm" alt="K-Means Clusters Scatter Plot">
+    </div>
+{% endblock %}

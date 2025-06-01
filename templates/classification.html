@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1 class="text-primary">Classification Performance</h1>
+    <p class="lead">
+        To predict the genres of Steam games, I trained three machine learning models: <strong>K-Nearest Neighbors (KNN)</strong>, <strong>Naïve Bayes</strong>, and <strong>Random Forest</strong>. This section presents a detailed evaluation of their performance, including accuracy, precision, recall, and F1-scores for each genre.
+    </p>
+    <p>
+        Explore the metrics below, along with visualizations such as an accuracy comparison chart, per-class metric bar charts, and confusion matrices for each model. These insights highlight how well each model performs across the genres: <em>Action</em>, <em>Adventure</em>, <em>RPG</em>, and <em>Simulation</em>.
+    </p>
+
+    <h3>Detailed Performance Metrics</h3>
+    <div class="border p-3 bg-light">
+        <pre>{{ performance_report }}</pre>
+    </div>
+
+    <h3>Accuracy Comparison Across Models</h3>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <img src="{{ url_for('static', filename='images/comparison_accuracy_chart.png') }}" class="img-fluid shadow-sm" alt="Accuracy Comparison Chart">
+        </div>
+    </div>
+
+    <h3>Per-Class Metric Comparisons</h3>
+    <p>These bar charts compare the precision, recall, F1-score, and support for each genre across all models.</p>
+    <div class="row text-center">
+        <div class="col-md-3">
+            <h5>Precision</h5>
+            <img src="{{ url_for('static', filename='images/comparison_precision_chart.png') }}" class="img-fluid shadow-sm" alt="Comparison Precision Chart">
+        </div>
+        <div class="col-md-3">
+            <h5>Recall</h5>
+            <img src="{{ url_for('static', filename='images/comparison_recall_chart.png') }}" class="img-fluid shadow-sm" alt="Comparison Recall Chart">
+        </div>
+        <div class="col-md-3">
+            <h5>F1-Score</h5>
+            <img src="{{ url_for('static', filename='images/comparison_f1-score_chart.png') }}" class="img-fluid shadow-sm" alt="Comparison F1-Score Chart">
+        </div>
+        <div class="col-md-3">
+            <h5>Support</h5>
+            <img src="{{ url_for('static', filename='images/comparison_support_chart.png') }}" class="img-fluid shadow-sm" alt="Comparison Support Chart">
+        </div>
+    </div>
+
+    <h3>Confusion Matrices</h3>
+    <p>These matrices visualize the prediction accuracy of each model, showing true vs. predicted genres.</p>
+    <div class="row text-center">
+        <div class="col-md-4">
+            <h4>KNN</h4>
+            <img src="{{ url_for('static', filename='images/knn_confusion_matrix.png') }}" class="img-fluid shadow-sm" alt="KNN Confusion Matrix">
+        </div>
+        <div class="col-md-4">
+            <h4>Naïve Bayes</h4>
+            <img src="{{ url_for('static', filename='images/nb_confusion_matrix.png') }}" class="img-fluid shadow-sm" alt="Naïve Bayes Confusion Matrix">
+        </div>
+        <div class="col-md-4">
+            <h4>Random Forest</h4>
+            <img src="{{ url_for('static', filename='images/rf_confusion_matrix.png') }}" class="img-fluid shadow-sm" alt="Random Forest Confusion Matrix">
+        </div>
+    </div>
+{% endblock %}

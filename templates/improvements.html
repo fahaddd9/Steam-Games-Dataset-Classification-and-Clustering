@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1 class="text-primary">Enhancing Model Performance</h1>
+    <p class="lead">
+        To push the boundaries of performance, I optimized the <strong>K-Nearest Neighbors (KNN)</strong>, <strong>Naïve Bayes</strong>, <strong>Random Forest</strong> classifiers, and <strong>K-Means</strong> clustering models. These improvements aimed to address class imbalance, refine model parameters, and incorporate more features for better results.
+    </p>
+    <p>
+        For classification, I applied:
+    </p>
+    <ul>
+        <li><strong>SMOTE</strong>: To balance the training data by oversampling minority classes (applied to KNN, Naïve Bayes, and Random Forest).</li>
+        <li><strong>Hyperparameter Tuning</strong>: Used GridSearchCV to optimize parameters for KNN (n_neighbors, weights), Naïve Bayes (alpha), and Random Forest (n_estimators, max_depth, min_samples_split).</li>
+        <li><strong>Feature Selection</strong>: Focused on the top 20 features based on importance (applied to Random Forest).</li>
+    </ul>
+    <p>
+        For clustering, I:
+    </p>
+    <ul>
+        <li><strong>Adjusted <code>k</code></strong>: Increased the number of clusters to <code>k=5</code> based on a refined elbow plot.</li>
+        <li><strong>Added Categorical Features</strong>: Included one-hot encoded categorical features for more comprehensive clustering.</li>
+    </ul>
+    <p>
+        Below are the improved metrics, a detailed classification report, and visualizations showcasing the enhanced results, including before-and-after comparisons for all models.
+    </p>
+
+    <h3>Improved Performance Metrics</h3>
+    <div class="border p-3 bg-light">
+        <pre>{{ improvement_report }}</pre>
+    </div>
+
+    <h3>Visualizations</h3>
+
+    <h4>KNN Performance: Before vs. After Improvements</h4>
+    <p>This chart compares key metrics of the KNN classifier before and after applying improvements, highlighting gains in accuracy and F1-scores.</p>
+    <div class="text-center">
+        <img src="{{ url_for('static', filename='images/knn_metrics_comparison.png') }}" class="img-fluid shadow-sm" alt="KNN Metrics Comparison">
+    </div>
+
+    <h4>Naïve Bayes Performance: Before vs. After Improvements</h4>
+    <p>This chart compares key metrics of the Naïve Bayes classifier before and after applying improvements, showcasing the impact of hyperparameter tuning.</p>
+    <div class="text-center">
+        <img src="{{ url_for('static', filename='images/nb_metrics_comparison.png') }}" class="img-fluid shadow-sm" alt="Naïve Bayes Metrics Comparison">
+    </div>
+
+    <h4>Random Forest Performance: Before vs. After Improvements</h4>
+    <p>This chart compares key metrics of the Random Forest classifier before and after applying improvements, highlighting gains in accuracy and F1-scores.</p>
+    <div class="text-center">
+        <img src="{{ url_for('static', filename='images/rf_metrics_comparison.png') }}" class="img-fluid shadow-sm" alt="Random Forest Metrics Comparison">
+    </div>
+
+    <h4>K-Means Performance: Before vs. After Improvements</h4>
+    <p>This chart compares the Silhouette Score and Adjusted Rand Index for K-Means clustering before and after improvements, showing the impact of adjusting <code>k</code> and adding categorical features.</p>
+    <div class="text-center">
+        <img src="{{ url_for('static', filename='images/kmeans_metrics_comparison.png') }}" class="img-fluid shadow-sm" alt="K-Means Metrics Comparison">
+    </div>
+
+    <h4>Improved Elbow Plot (K-Means, <code>k=5</code>)</h4>
+    <div class="text-center">
+        <img src="{{ url_for('static', filename='images/elbow_plot_improved.png') }}" class="img-fluid shadow-sm" alt="Improved Elbow Plot">
+    </div>
+
+    <h4>K-Means Clusters Scatter Improved</h4>
+    <div class="text-center">
+        <img src="{{ url_for('static', filename='images/kmeans_clusters_scatter_improved.png') }}" class="img-fluid shadow-sm" alt="Random Forest Feature Importance">
+    </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1 class="text-primary">Dataset Exploration & Preprocessing</h1>
+    <p class="lead">
+        The foundation of this project lies in a comprehensive dataset of Steam games, featuring both numerical attributes (e.g., price, achievements) and categorical details (e.g., developer, tags). I carefully preprocessed the data to ensure quality and relevance, filtering for the top four genres: <strong>Action</strong>, <strong>Adventure</strong>, <strong>RPG</strong>, and <strong>Simulation</strong>.
+    </p>
+    <p>
+        The preprocessing steps included:
+    </p>
+    <ul>
+        <li><strong>Handling Missing Values</strong>: Filled missing numerical values with means and categorical values with "Unknown".</li>
+        <li><strong>Feature Engineering</strong>: Derived new features like release year, number of languages, sentiment scores, and more.</li>
+        <li><strong>Data Transformation</strong>: Scaled numerical features and one-hot encoded categorical features for model compatibility.</li>
+        <li><strong>Train-Test Split</strong>: Divided the data into 80% training and 20% testing sets.</li>
+    </ul>
+    <p>
+        The final preprocessed dataset is saved as <code>preprocessed_steam_games.csv</code> and is ready for classification and clustering tasks.
+    </p>
+
+    <h3>Preprocessing Insights</h3>
+
+    <h4>Dataset Overview</h4>
+    <p>{{ preprocessing.dataset_shape }}</p>
+
+    <h4>Columns in the Dataset</h4>
+    <p class="font-monospace">{{ preprocessing.columns | join(', ') }}</p>
+
+    <h4>Genre Distribution (Before Filtering)</h4>
+    <pre class="border p-3 bg-light">{{ preprocessing.genre_distribution }}</pre>
+
+    <h4>Filtered Genre Distribution</h4>
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Genre</th>
+                <th>Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for genre, count in preprocessing.filtered_genre_distribution.items() %}
+                <tr>
+                    <td>{{ genre }}</td>
+                    <td>{{ count }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h4>Status</h4>
+    <p class="text-success">{{ preprocessing.completion_message }}</p>
+{% endblock %}
